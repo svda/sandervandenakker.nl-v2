@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "build",
+    "public": "app/build",
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -12,6 +12,14 @@
         "destination": "/index.html"
       }
     ],
-    "predeploy": "yarn build"
+    "predeploy": [
+      "npm --prefix app run build"
+    ]
+  },
+  "functions": {
+    "source": "functions",
+    "predeploy": [
+      "npm --prefix functions run build"
+    ]
   }
 }
