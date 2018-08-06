@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { Helmet } from 'react-helmet';
 
 import { withStyles, WithStyles } from '@material-ui/core/styles';
@@ -12,6 +12,9 @@ const styles = {
 };
 
 class Home extends React.Component<IHomeProps, IHomeState> {
+  public async componentDidMount() {
+    // const posts = [];
+  }
   public render() {
     const { classes } = this.props;
     return (
@@ -31,7 +34,7 @@ interface IHomeProps extends WithStyles {
 }
 
 interface IHomeState {
-  currentUser: any;
+  posts: any;
 }
 
 export default withStyles(styles)(Home);

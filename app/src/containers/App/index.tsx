@@ -1,7 +1,9 @@
-import React from 'react';
+import * as React from 'react';
+import { Provider as StoreProvider } from 'react-redux';
 
 import { createStyles, MuiThemeProvider, withStyles, WithStyles } from '@material-ui/core/styles';
 
+import store from '../../store';
 import Routes from '../../routes';
 import theme from '../../theme';
 import Header from './components/Header';
@@ -29,12 +31,14 @@ class App extends React.Component<IAppProps, IAppState> {
 
   public render() {
     return (
-      <MuiThemeProvider theme={theme}>
-        <div id="app" className={this.getClassName()}>
-          <Header toggleActive={this.toggleActive} />
-          <Routes />
-        </div>
-      </MuiThemeProvider>
+      <StoreProvider store={store}>
+        <MuiThemeProvider theme={theme}>
+          <div id="app" className={this.getClassName()}>
+            <Header toggleActive={this.toggleActive} />
+            <Routes />
+          </div>
+        </MuiThemeProvider>
+      </StoreProvider>
     );
   }
 

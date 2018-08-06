@@ -11,8 +11,8 @@
   },
   "main": "build/index.js",
   "dependencies": {
-    "firebase-admin": "~5.12.1",
-    "firebase-functions": "^1.0.3"
+    "firebase-admin": "^5.13.1",
+    "firebase-functions": "^2.0.2"
   },
   "devDependencies": {
     "tslint": "^5.8.0",

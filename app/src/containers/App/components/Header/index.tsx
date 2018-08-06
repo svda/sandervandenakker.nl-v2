@@ -1,5 +1,6 @@
-import React from 'react';
-
+import * as React from 'react';
+import { connect } from 'react-redux';
+import { Dispatch } from 'redux';
 import { withStyles } from '@material-ui/core/styles';
 
 import AppBar from '@material-ui/core/AppBar';
@@ -10,7 +11,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import MenuIcon from '@material-ui/icons/Menu';
 
-import { auth, googleAuthProvider } from '../../../../firebase';
+import * as Actions from '../../actions';
 
 const styles = {
   appBar: {
@@ -36,24 +37,10 @@ const styles = {
   }
 };
 
-class Header extends React.Component<IHeaderProps, IHeaderState> {
-  constructor(props: IHeaderProps) {
-    super(props);
-    this.state = {
-      currentUser: {},
-    };
-  }
+class Header extends React.Component<IHeaderProps> {
 
-  public componentDidMount() {
-    auth.onAuthStateChanged((currentUser) => {
-      this.setState({
-        currentUser: currentUser || {}
-      });
-    });
-  }
-
-  public render() {
-    const { classes, toggleActive } = this.props;
+  public render(): React.ReactNode {
+    const { classes, signIn, toggleActive, user } = this.props;
 
     return (
       <AppBar id="header" className={classes.appBar} title="Eccentrade App">
@@ -62,44 +49,51 @@ class Header extends React.Component<IHeaderProps, IHeaderState> {
             <MenuIcon />
           </IconButton>
           <Typography variant="title" color="inherit" className={classes.flex} />
-          {this.state.currentUser.email ?
+          {user && user.email ?
             this.displayCurrentUser() :
-            <Button className={classes.button} color="inherit" onClick={this.signIn}>Sign In</Button>
+            <Button className={classes.button} color="inherit" onClick={signIn}>Sign In</Button>
           }
         </Toolbar>
       </AppBar>
     );
   }
 
-  private signIn() {
-    auth.signInWithPopup(googleAuthProvider);
-  }
-
-  private signOut() {
-    auth.signOut();
-  }
-
   private displayCurrentUser = () => {
-    const { classes } = this.props;
+    const { classes, signOut, user } = this.props;
 
     return (
       <Avatar
         className={classes.avatarButton}
-        src={this.state.currentUser.photoURL}
-        alt={this.state.currentUser.displayName}
-        onClick={this.signOut}
+        src={user.photoURL}
+        alt={user.displayName}
+        onClick={signOut}
       />
     );
   }
 }
 
-interface IHeaderProps {
+interface IHeaderStateProps {
+  user: any;
+}
+
+interface IHeaderDispatchProps extends React.Props<any> {
+  signIn: any;
+  signOut: any,
+}
+
+interface IHeaderOwnProps extends React.Props<any> {
   classes: any;
   toggleActive: (event: React.MouseEvent<HTMLInputElement>) => void;
 }
 
-interface IHeaderState {
-  currentUser: any;
-}
+type IHeaderProps = IHeaderStateProps & IHeaderOwnProps & IHeaderDispatchProps;
 
-export default withStyles(styles)(Header);
+export default withStyles(styles)(connect<IHeaderStateProps, IHeaderDispatchProps>(
+  (state: any) => ({
+    user: state.app.user,
+  }),
+  (dispatch: Dispatch) => ({
+    signIn: () => dispatch(Actions.loginUser()),
+    signOut: () => dispatch(Actions.logoutUser()),
+  })
+)(Header));
