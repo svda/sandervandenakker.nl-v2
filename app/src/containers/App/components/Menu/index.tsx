@@ -2,38 +2,38 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core';
 import { Link } from 'react-router-dom';
-import Build from '@material-ui/icons/Build';
-import Face from '@material-ui/icons/Face';
-import FolderSpecial from '@material-ui/icons/FolderSpecial';
-import Home from '@material-ui/icons/Home';
-import School from '@material-ui/icons/School';
+import BuildIcon from '@material-ui/icons/Build';
+import FaceIcon from '@material-ui/icons/Face';
+import FolderIcon from '@material-ui/icons/FolderSpecial';
+import HomeIcon from '@material-ui/icons/Home';
+import SchoolIcon from '@material-ui/icons/School';
 
 import { cover, IThemeProps } from '../../../../theme';
 
 const items = [{
   id: 'home',
   title: 'Home',
-  icon: Home,
+  icon: HomeIcon,
   ancestors: [],
 }, {
   id: 'about',
   title: 'About',
-  icon: Face,
+  icon: FaceIcon,
   ancestors: [],
 }, {
   id: 'services',
   title: 'Services',
-  icon: Build,
+  icon: BuildIcon,
   ancestors: [],
 }, {
   id: 'work',
   title: 'Work',
-  icon: FolderSpecial,
+  icon: FolderIcon,
   ancestors: [],
 }, {
   id: 'lab',
   title: 'Lab',
-  icon: School,
+  icon: SchoolIcon,
   ancestors: [],
 }];
 
