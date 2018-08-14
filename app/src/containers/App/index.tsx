@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import { withStyles, WithStyles } from '@material-ui/core/styles';
@@ -36,6 +37,10 @@ class App extends React.Component<IAppStateProps & IHeaderOwnProps & IHeaderDisp
 
     return (
       <div id="app" className={menuActive ? classes.active : classes.inactive}>
+        <Helmet
+          defaultTitle="Sander van den Akker"
+          titleTemplate="%s - Sander van den Akker"
+        />
         <Menu onItemClick={toggleMenu} />
         <Window onWindowClick={toggleMenu}>
           <Header />
