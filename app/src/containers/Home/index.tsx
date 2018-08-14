@@ -8,7 +8,7 @@ const styles = {
     background: 'url("/images/bg-home.jpg") center',
     backgroundSize: 'cover',
     minHeight: 500,
-  }
+  },
 };
 
 class Home extends React.Component<IHomeProps, IHomeState> {

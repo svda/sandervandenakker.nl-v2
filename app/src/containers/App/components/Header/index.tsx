@@ -27,66 +27,57 @@ const styles = {
     backgroundColor: 'rgba(0, 0, 0, 0.2)',
     '&:hover': {
       backgroundColor: 'rgba(0, 0, 0, 0.3)',
-    }
+    },
   },
   flex: {
     flexGrow: 1,
   },
   menuButton: {
     marginLeft: -8,
-  }
+  },
 };
 
-class Header extends React.Component<IHeaderProps> {
+class Header extends React.Component<IHeaderStateProps & IHeaderOwnProps & IHeaderDispatchProps> {
 
   public render(): React.ReactNode {
-    const { classes, signIn, toggleActive, user } = this.props;
+    const { classes, signIn, signOut, toggleMenu, user } = this.props;
 
     return (
-      <AppBar id="header" className={classes.appBar} title="Eccentrade App">
+      <AppBar id="header" className={classes.appBar} title="App">
         <Toolbar>
-          <IconButton className={[classes.menuButton, classes.button].join(' ')} onClick={toggleActive} color="inherit" aria-label="Menu">
+          <IconButton className={[classes.menuButton, classes.button].join(' ')} onClick={toggleMenu} color="inherit" aria-label="Menu">
             <MenuIcon />
           </IconButton>
           <Typography variant="title" color="inherit" className={classes.flex} />
           {user && user.email ?
-            this.displayCurrentUser() :
+            <Avatar
+              className={classes.avatarButton}
+              src={user.photoURL}
+              alt={user.displayName}
+              onClick={signOut}
+            />
+            :
             <Button className={classes.button} color="inherit" onClick={signIn}>Sign In</Button>
           }
         </Toolbar>
       </AppBar>
     );
   }
-
-  private displayCurrentUser = () => {
-    const { classes, signOut, user } = this.props;
-
-    return (
-      <Avatar
-        className={classes.avatarButton}
-        src={user.photoURL}
-        alt={user.displayName}
-        onClick={signOut}
-      />
-    );
-  }
 }
 
-interface IHeaderStateProps {
+interface IHeaderStateProps extends React.Props<any> {
   user: any;
 }
 
 interface IHeaderDispatchProps extends React.Props<any> {
   signIn: any;
   signOut: any,
+  toggleMenu: any,
 }
 
 interface IHeaderOwnProps extends React.Props<any> {
   classes: any;
-  toggleActive: (event: React.MouseEvent<HTMLInputElement>) => void;
 }
-
-type IHeaderProps = IHeaderStateProps & IHeaderOwnProps & IHeaderDispatchProps;
 
 export default withStyles(styles)(connect<IHeaderStateProps, IHeaderDispatchProps>(
   (state: any) => ({
@@ -95,5 +86,6 @@ export default withStyles(styles)(connect<IHeaderStateProps, IHeaderDispatchProp
   (dispatch: Dispatch) => ({
     signIn: () => dispatch(Actions.loginUser()),
     signOut: () => dispatch(Actions.logoutUser()),
-  })
+    toggleMenu: (event: React.MouseEvent) => dispatch(Actions.toggleMenu()),
+  }),
 )(Header));
