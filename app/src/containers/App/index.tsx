@@ -1,58 +1,69 @@
 import * as React from 'react';
-import { Provider as StoreProvider } from 'react-redux';
+import { connect } from 'react-redux';
+import { Dispatch } from 'redux';
+import { withStyles, WithStyles } from '@material-ui/core/styles';
 
-import { createStyles, MuiThemeProvider, withStyles, WithStyles } from '@material-ui/core/styles';
-
-import store from '../../store';
 import Routes from '../../routes';
-import theme from '../../theme';
+import Menu from './components/Menu';
+import Window from './components/Window';
 import Header from './components/Header';
+import Footer from './components/Footer';
 
+import * as Actions from './actions';
 import '../../theme/index.css';
 
-const styles = /*(theme: Theme) =>*/ createStyles({
+const transform = 'translate3d(0, 15%, 0) scale(0.85)';
 
-});
+const styles = {
+  inactive: {
+    transform: 'scale(1)',
+  },
+  active: {
+    '& div:nth-child(2)': {
+      transform,
+      'z-index': 2,
+    },
+    '& div:nth-child(3)': {
+      transform,
+    },
+  },
+};
 
-class App extends React.Component<IAppProps, IAppState> {
-  constructor(props: IAppProps) {
-    super(props);
+class App extends React.Component<IAppStateProps & IHeaderOwnProps & IHeaderDispatchProps> {
 
-    this.state = {
-      active: false,
-    }
-  }
+  public render(): React.ReactNode {
+    const { classes, menuActive, toggleMenu } = this.props;
 
-  public toggleActive = () => {
-    this.setState({
-      active: !this.state.active,
-    });
-  }
-
-  public render() {
     return (
-      <StoreProvider store={store}>
-        <MuiThemeProvider theme={theme}>
-          <div id="app" className={this.getClassName()}>
-            <Header toggleActive={this.toggleActive} />
-            <Routes />
-          </div>
-        </MuiThemeProvider>
-      </StoreProvider>
+      <div id="app" className={menuActive ? classes.active : classes.inactive}>
+        <Menu onItemClick={toggleMenu} />
+        <Window onWindowClick={toggleMenu}>
+          <Header />
+          <Routes />
+          <Footer />
+        </Window>
+      </div>
     );
   }
-
-  private getClassName = () => {
-    return this.state.active ? 'active' : '';
-  }
 }
 
-interface IAppProps extends WithStyles {
-  classes: {}
+interface IAppStateProps extends React.Props<any> {
+  menuActive: boolean;
 }
 
-interface IAppState {
-  active: boolean;
+interface IHeaderDispatchProps extends React.Props<any> {
+  toggleMenu: any,
 }
 
-export default withStyles(styles)(App);
+interface IHeaderOwnProps extends WithStyles {
+  classes: any;
+}
+
+export default withStyles(styles)(connect<IAppStateProps, IHeaderDispatchProps>(
+  (state: any) => ({
+    menuActive: state.app.menu.active,
+  }),
+  (dispatch: Dispatch) => ({
+    toggleMenu: (event: React.MouseEvent) => dispatch(Actions.toggleMenu()),
+  }),
+)(App));
