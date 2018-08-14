@@ -2,7 +2,11 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core';
 import { Link } from 'react-router-dom';
-import { Build, Face, FolderSpecial, Home, School } from '@material-ui/icons';
+import Build from '@material-ui/icons/Build';
+import Face from '@material-ui/icons/Face';
+import FolderSpecial from '@material-ui/icons/FolderSpecial';
+import Home from '@material-ui/icons/Home';
+import School from '@material-ui/icons/School';
 
 import { cover, IThemeProps } from '../../../../theme';
 
