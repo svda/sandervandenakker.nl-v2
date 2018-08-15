@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
-import { withStyles, WithStyles } from '@material-ui/core/styles';
+import withStyles from '@material-ui/core/styles/withStyles';
 
 import Routes from '../../routes';
 import Menu from './components/Menu';
@@ -60,7 +60,7 @@ interface IHeaderDispatchProps extends React.Props<any> {
   toggleMenu: any,
 }
 
-interface IHeaderOwnProps extends WithStyles {
+interface IHeaderOwnProps {
   classes: any;
 }
 
