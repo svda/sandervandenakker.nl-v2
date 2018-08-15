@@ -549,6 +549,13 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-loadable@^5.4.1":
+  version "5.4.1"
+  resolved "http://npm.eccentrade.com/@types%2freact-loadable/-/react-loadable-5.4.1.tgz#bc76978c6d9039e5808797b5ee35f6ae18b7329f"
+  dependencies:
+    "@types/react" "*"
+    "@types/webpack" "*"
+
 "@types/react-redux@^6.0.5":
   version "6.0.5"
   resolved "http://npm.eccentrade.com/@types%2freact-redux/-/react-redux-6.0.5.tgz#bb44679588554f3b686666c0484a960aa7a47b86"
@@ -612,9 +619,28 @@
     "@types/express-serve-static-core" "*"
     "@types/mime" "*"
 
+"@types/tapable@*":
+  version "1.0.4"
+  resolved "http://npm.eccentrade.com/@types%2ftapable/-/tapable-1.0.4.tgz#b4ffc7dc97b498c969b360a41eee247f82616370"
+
 "@types/tough-cookie@*":
   version "2.3.3"
   resolved "http://npm.eccentrade.com/@types%2ftough-cookie/-/tough-cookie-2.3.3.tgz#7f226d67d654ec9070e755f46daebf014628e9d9"
+
+"@types/uglify-js@*":
+  version "3.0.3"
+  resolved "http://npm.eccentrade.com/@types%2fuglify-js/-/uglify-js-3.0.3.tgz#801a5ca1dc642861f47c46d14b700ed2d610840b"
+  dependencies:
+    source-map "^0.6.1"
+
+"@types/webpack@*":
+  version "4.4.9"
+  resolved "http://npm.eccentrade.com/@types%2fwebpack/-/webpack-4.4.9.tgz#814721fb4cfaebe553ffdf2ae2c504494ec6613b"
+  dependencies:
+    "@types/node" "*"
+    "@types/tapable" "*"
+    "@types/uglify-js" "*"
+    source-map "^0.6.0"
 
 abab@^1.0.4:
   version "1.0.4"
@@ -7272,7 +7298,7 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@^15.5.4, prop-types@^15.5.7, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2:
+prop-types@^15.5.0, prop-types@^15.5.4, prop-types@^15.5.7, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2:
   version "15.6.2"
   resolved "http://npm.eccentrade.com/prop-types/-/prop-types-15.6.2.tgz#05d5ca77b4453e985d60fc7ff8c859094a497102"
   dependencies:
@@ -7559,6 +7585,12 @@ react-komposer@^2.0.0:
 react-lifecycles-compat@^3.0.2, react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "http://npm.eccentrade.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
+
+react-loadable@^5.5.0:
+  version "5.5.0"
+  resolved "http://npm.eccentrade.com/react-loadable/-/react-loadable-5.5.0.tgz#582251679d3da86c32aae2c8e689c59f1196d8c4"
+  dependencies:
+    prop-types "^15.5.0"
 
 react-modal@^1.2.0, react-modal@^1.2.1:
   version "1.9.7"
