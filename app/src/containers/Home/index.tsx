@@ -1,17 +1,16 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet';
+import withStyles from '@material-ui/core/styles/withStyles';
 
-import { withStyles, WithStyles } from '@material-ui/core/styles';
+import { IThemeProps, masthead } from '../../theme';
 
 const styles = {
-  masthead: {
-    background: 'url("/images/bg-home.jpg") center',
-    backgroundSize: 'cover',
-    minHeight: 500,
-  },
+  masthead: Object.assign({}, masthead, {
+    background: 'url(/images/bg-home.jpg) center',
+  }),
 };
 
-class Home extends React.Component<IHomeProps, IHomeState> {
+class Home extends React.Component<IHomeProps> {
   public async componentDidMount() {
     // const posts = [];
   }
@@ -20,7 +19,7 @@ class Home extends React.Component<IHomeProps, IHomeState> {
     return (
       <main id="page" className="home">
         <Helmet>
-          <title>Software Engineer in Amsterdam - Sander van den Akker</title>
+          <title>Software Engineer in Amsterdam</title>
         </Helmet>
         <div className={classes.masthead} />
       </main>
@@ -28,13 +27,8 @@ class Home extends React.Component<IHomeProps, IHomeState> {
   }
 }
 
-interface IHomeProps extends WithStyles {
-  classes: any;
+interface IHomeProps extends IThemeProps {
   toggleActive: (event: React.MouseEvent<HTMLInputElement>) => void;
-}
-
-interface IHomeState {
-  posts: any;
 }
 
 export default withStyles(styles)(Home);

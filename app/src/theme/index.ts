@@ -6,20 +6,24 @@ export interface IThemeProps {
 }
 
 export const cover = {
-  position: 'absolute',
-  top: 0,
-  right: 0,
-  bottom: 0,
-  left: 0,
-  width: 'auto',
-  height: 'auto',
+  display: 'flex',
+  position: 'absolute' as 'absolute', // Fix for type-widening issue.
+  width: '100%',
+  height: '100%',
+};
+
+export const masthead = {
+  backgroundSize: 'cover',
+  minHeight: 500,
+  padding: '5rem 0',
+  'text-align': 'center',
 };
 
 export default createMuiTheme({
   typography: {
-    fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif',
-    title: {
-      fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif',
-    },
+    // fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif',
+    // title: {
+    //   fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif',
+    // },
   },
 });
