@@ -18,8 +18,8 @@ body {
 
 #page {
   display: flex;
+  flex-direction: column;
   flex-grow: 1;
-  /* margin-top: 64px; */
 	overflow: hidden;
 	overflow-y: scroll;
 }
