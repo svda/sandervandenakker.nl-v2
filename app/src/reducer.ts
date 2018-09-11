@@ -1,9 +1,11 @@
 import { routerReducer } from 'react-router-redux';
 import { combineReducers } from 'redux';
 
-import app from './containers/App/reducer';
+import app from './modules/App/reducer';
+import intlReducer from './modules/Intl/reducer';
 
 export default combineReducers({
-  router: routerReducer,
   app,
+  intl: intlReducer,
+  router: routerReducer,
 });

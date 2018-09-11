@@ -2,20 +2,21 @@ import * as React from 'react';
 import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
+import createStyles from '@material-ui/core/styles/createStyles';
 import withStyles from '@material-ui/core/styles/withStyles';
 
-import Routes from '../../routes';
-import Menu from './components/Menu';
-import Window from './components/Window';
-import Header from './components/Header';
-import Footer from './components/Footer';
+import Routes from '../../../../routes';
+import Menu from '../../components/Menu';
+import Window from '../../components/Window';
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
 
-import * as Actions from './actions';
-import '../../theme/index.css';
+import * as Actions from '../../actions';
+import '../../../../theme/index.css';
 
 const transform = 'translate3d(0, 15%, 0) scale(0.85)';
 
-const styles = {
+const styles = createStyles({
   inactive: {
     transform: 'scale(1)',
   },
@@ -28,7 +29,7 @@ const styles = {
       transform,
     },
   },
-};
+});
 
 class App extends React.Component<IAppStateProps & IHeaderOwnProps & IHeaderDispatchProps> {
 
@@ -41,7 +42,7 @@ class App extends React.Component<IAppStateProps & IHeaderOwnProps & IHeaderDisp
           defaultTitle="Sander van den Akker"
           titleTemplate="%s - Sander van den Akker"
         />
-        <Menu onItemClick={toggleMenu} />
+        <Menu />
         <Window onWindowClick={toggleMenu}>
           <Header />
           <Routes />
@@ -57,7 +58,7 @@ interface IAppStateProps extends React.Props<any> {
 }
 
 interface IHeaderDispatchProps extends React.Props<any> {
-  toggleMenu: any,
+  toggleMenu: any; // TODO Find the right type
 }
 
 interface IHeaderOwnProps {

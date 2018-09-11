@@ -512,6 +512,10 @@
     csstype "^2.0.0"
     indefinite-observable "^1.0.1"
 
+"@types/lodash@^4.14.116":
+  version "4.14.116"
+  resolved "http://npm.eccentrade.com/@types%2flodash/-/lodash-4.14.116.tgz#5ccf215653e3e8c786a58390751033a9adca0eb9"
+
 "@types/lodash@^4.14.34":
   version "4.14.115"
   resolved "http://npm.eccentrade.com/@types%2flodash/-/lodash-4.14.115.tgz#54d171b2ce12c058742443b5f6754760f701b8f9"
@@ -549,12 +553,31 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-intl-redux@^0.1.10":
+  version "0.1.10"
+  resolved "http://npm.eccentrade.com/@types%2freact-intl-redux/-/react-intl-redux-0.1.10.tgz#acd8202cde4a4ffce0dc2dce6505391e934b4eae"
+  dependencies:
+    "@types/react-intl" "*"
+    "@types/react-redux" "*"
+    redux "^3.6.0"
+
+"@types/react-intl@*":
+  version "2.3.10"
+  resolved "http://npm.eccentrade.com/@types%2freact-intl/-/react-intl-2.3.10.tgz#b1b7379f072224071aa94bc085db0b65b708cb17"
+
 "@types/react-loadable@^5.4.1":
   version "5.4.1"
   resolved "http://npm.eccentrade.com/@types%2freact-loadable/-/react-loadable-5.4.1.tgz#bc76978c6d9039e5808797b5ee35f6ae18b7329f"
   dependencies:
     "@types/react" "*"
     "@types/webpack" "*"
+
+"@types/react-redux@*":
+  version "6.0.8"
+  resolved "http://npm.eccentrade.com/@types%2freact-redux/-/react-redux-6.0.8.tgz#29c884174516f0cfab6638d2236fd7d53f45640e"
+  dependencies:
+    "@types/react" "*"
+    redux "^4.0.0"
 
 "@types/react-redux@^6.0.5":
   version "6.0.5"
@@ -2535,6 +2558,16 @@ concat-stream@^1.5.0, concat-stream@^1.6.0:
     readable-stream "^2.2.2"
     typedarray "^0.0.6"
 
+config-webpack@^1.0.4:
+  version "1.0.4"
+  resolved "http://npm.eccentrade.com/config-webpack/-/config-webpack-1.0.4.tgz#4768875d7394c799a135f9b6673be17e5ec04a1f"
+
+config@^2.0.1:
+  version "2.0.1"
+  resolved "http://npm.eccentrade.com/config/-/config-2.0.1.tgz#995ccc8175460578d646ac0a2e4018ffa44ca046"
+  dependencies:
+    json5 "^1.0.1"
+
 configstore@^2.0.0:
   version "2.1.0"
   resolved "http://npm.eccentrade.com/configstore/-/configstore-2.1.0.tgz#737a3a7036e9886102aa6099e47bb33ab1aba1a1"
@@ -4102,6 +4135,17 @@ glob@^7.0.0, glob@^7.0.3, glob@^7.0.5, glob@^7.1.1, glob@^7.1.2:
     once "^1.3.0"
     path-is-absolute "^1.0.0"
 
+glob@^7.1.3:
+  version "7.1.3"
+  resolved "http://npm.eccentrade.com/glob/-/glob-7.1.3.tgz#3960832d3f1574108342dafd3a67b332c0969df1"
+  dependencies:
+    fs.realpath "^1.0.0"
+    inflight "^1.0.4"
+    inherits "2"
+    minimatch "^3.0.4"
+    once "^1.3.0"
+    path-is-absolute "^1.0.0"
+
 global-dirs@^0.1.0:
   version "0.1.1"
   resolved "http://npm.eccentrade.com/global-dirs/-/global-dirs-0.1.1.tgz#b319c0dd4607f353f3be9cca4c72fc148c49f445"
@@ -4678,7 +4722,27 @@ interpret@^1.0.0:
   version "1.1.0"
   resolved "http://npm.eccentrade.com/interpret/-/interpret-1.1.0.tgz#7ed1b1410c6a0e0f78cf95d3b8440c63f78b8614"
 
-invariant@2.x.x, invariant@^2.0.0, invariant@^2.2.1, invariant@^2.2.2, invariant@^2.2.4:
+intl-format-cache@^2.0.5:
+  version "2.1.0"
+  resolved "http://npm.eccentrade.com/intl-format-cache/-/intl-format-cache-2.1.0.tgz#04a369fecbfad6da6005bae1f14333332dcf9316"
+
+intl-messageformat-parser@1.4.0:
+  version "1.4.0"
+  resolved "http://npm.eccentrade.com/intl-messageformat-parser/-/intl-messageformat-parser-1.4.0.tgz#b43d45a97468cadbe44331d74bb1e8dea44fc075"
+
+intl-messageformat@^2.0.0, intl-messageformat@^2.1.0:
+  version "2.2.0"
+  resolved "http://npm.eccentrade.com/intl-messageformat/-/intl-messageformat-2.2.0.tgz#345bcd46de630b7683330c2e52177ff5eab484fc"
+  dependencies:
+    intl-messageformat-parser "1.4.0"
+
+intl-relativeformat@^2.0.0:
+  version "2.1.0"
+  resolved "http://npm.eccentrade.com/intl-relativeformat/-/intl-relativeformat-2.1.0.tgz#010f1105802251f40ac47d0e3e1a201348a255df"
+  dependencies:
+    intl-messageformat "^2.0.0"
+
+invariant@2.x.x, invariant@^2.0.0, invariant@^2.1.1, invariant@^2.2.1, invariant@^2.2.2, invariant@^2.2.4:
   version "2.2.4"
   resolved "http://npm.eccentrade.com/invariant/-/invariant-2.2.4.tgz#610f3c92c9359ce1db616e538008d23ff35158e6"
   dependencies:
@@ -7552,6 +7616,21 @@ react-inspector@^1.1.0:
     babel-runtime "^6.9.2"
     is-dom "^1.0.5"
 
+react-intl-redux@^2.0.2:
+  version "2.0.2"
+  resolved "http://npm.eccentrade.com/react-intl-redux/-/react-intl-redux-2.0.2.tgz#1a5efff87d2429f1a94a6724488460ca1a564d2d"
+  dependencies:
+    prop-types "^15.6.2"
+
+react-intl@^2.4.0:
+  version "2.4.0"
+  resolved "http://npm.eccentrade.com/react-intl/-/react-intl-2.4.0.tgz#66c14dc9df9a73b2fbbfbd6021726e80a613eb15"
+  dependencies:
+    intl-format-cache "^2.0.5"
+    intl-messageformat "^2.1.0"
+    intl-relativeformat "^2.0.0"
+    invariant "^2.1.1"
+
 react-jss@^8.1.0:
   version "8.6.1"
   resolved "http://npm.eccentrade.com/react-jss/-/react-jss-8.6.1.tgz#a06e2e1d2c4d91b4d11befda865e6c07fbd75252"
@@ -7868,7 +7947,7 @@ redux-thunk@^2.3.0:
     loose-envify "^1.1.0"
     symbol-observable "^1.2.0"
 
-redux@^3.5.2:
+redux@^3.5.2, redux@^3.6.0:
   version "3.7.2"
   resolved "http://npm.eccentrade.com/redux/-/redux-3.7.2.tgz#06b73123215901d25d065be342eb026bc1c8537b"
   dependencies:

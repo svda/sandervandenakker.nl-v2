@@ -1,14 +1,19 @@
 import * as React from 'react';
+import { injectIntl, InjectedIntlProps } from 'react-intl';
 import { connect } from 'react-redux';
-import withStyles from '@material-ui/core/styles/withStyles';
 import { Link } from 'react-router-dom';
+import { Dispatch } from 'redux';
+import { Theme } from '@material-ui/core/styles';
+import createStyles from '@material-ui/core/styles/createStyles';
+import withStyles from '@material-ui/core/styles/withStyles';
 import BuildIcon from '@material-ui/icons/Build';
 import FaceIcon from '@material-ui/icons/Face';
 import FolderIcon from '@material-ui/icons/FolderSpecial';
 import HomeIcon from '@material-ui/icons/Home';
 import SchoolIcon from '@material-ui/icons/School';
 
-import { cover, IThemeProps } from '../../../../theme';
+import { cover } from '../../../../theme';
+import * as Actions from '../../actions';
 
 const items = [{
   id: 'home',
@@ -48,7 +53,7 @@ const getItemLink = (item: any) => {
   return parts.join('/');
 }
 
-const styles = (theme: any) => ({
+const styles = createStyles(({ typography }: Theme) => ({
   menu: Object.assign({}, cover, {
     'background': 'url(/images/body.jpg)',
   }),
@@ -83,13 +88,13 @@ const styles = (theme: any) => ({
   },
   text: {
     display: 'block',
-    'font-family': theme.typography.title.fontFamily,
-    'font-size': theme.typography.title.fontSize,
+    'font-family': typography.title.fontFamily,
+    'font-size': typography.title.fontSize,
     'font-weight': 300,
   },
-});
+}));
 
-class Menu extends React.Component<IThemeProps & IMenuDispatchProps> {
+class Menu extends React.Component<IMenuOwnProps & IMenuDispatchProps & InjectedIntlProps> {
   public render(): React.ReactNode {
     const { classes } = this.props;
     
@@ -103,29 +108,35 @@ class Menu extends React.Component<IThemeProps & IMenuDispatchProps> {
   }
 
   private renderItem(item: any): React.ReactNode {
-    const { classes, onItemClick } = this.props;
+    const { classes, intl, onItemClick } = this.props;
 
     return (
       <li key={item.id} className={classes.item} onClick={onItemClick}>
         <Link className={classes.link} to={getItemLink(item)}>
           {item.icon && <item.icon className={classes.icon} />}
-          <span className={classes.text}>{item.id}</span>
+          <span className={classes.text}>{intl.formatMessage({ id: `menu.${item.id}` })}</span>
         </Link>
       </li>
     );
   }
 }
 
-interface IMenuStateProps extends React.Props<any> {
-
+interface IMenuStateProps {
+  intl: any;
+}
+interface IMenuDispatchProps extends React.Props<any> {
+  onItemClick: any; // TODO Find the right type
 }
 
-interface IMenuDispatchProps extends React.Props<any> {
-  onItemClick: (event: React.MouseEvent) => void | undefined;
+interface IMenuOwnProps {
+  classes: any;
 }
 
 export default withStyles(styles, { withTheme: true })(connect<IMenuStateProps, IMenuDispatchProps>(
-  (state: any) => ({
-    
+  ({ intl }: any) => ({
+    intl,
   }),
-)(Menu));
+  (dispatch: Dispatch) => ({
+    onItemClick: (event: React.MouseEvent) => dispatch(Actions.toggleMenu()),
+  }),
+)(injectIntl(Menu)));

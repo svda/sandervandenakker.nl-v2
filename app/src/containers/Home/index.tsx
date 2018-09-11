@@ -1,14 +1,15 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet';
+import createStyles from '@material-ui/core/styles/createStyles';
 import withStyles from '@material-ui/core/styles/withStyles';
 
 import { IThemeProps, masthead } from '../../theme';
 
-const styles = {
+const styles = createStyles({
   masthead: Object.assign({}, masthead, {
     background: 'url(/images/bg-home.jpg) center',
   }),
-};
+});
 
 class Home extends React.Component<IHomeProps> {
   public async componentDidMount() {

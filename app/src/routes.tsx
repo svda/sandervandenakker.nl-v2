@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as Loadable from 'react-loadable';
 import { Route, Switch } from 'react-router-dom';
 
-import Loading from './containers/App/components/Loading';
+import Loading from './modules/App/components/Loading';
 
 const Home = Loadable({
   loader: () => import('./containers/Home'),

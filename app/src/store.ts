@@ -5,7 +5,7 @@ import thunk from 'redux-thunk';
 
 import history from './history';
 import rootReducer from './reducer';
-import addAppListeners from './containers/App/listeners';
+import addAppListeners from './modules/App/listeners';
 
 export interface IStore {
   router: RouterState;
