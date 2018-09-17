@@ -1,11 +1,13 @@
 import { routerReducer } from 'react-router-redux';
 import { combineReducers } from 'redux';
 
-import app from './modules/App/reducer';
+import appReducer from './modules/App/reducer';
+import authReducer from './modules/Auth/reducer';
 import intlReducer from './modules/Intl/reducer';
 
 export default combineReducers({
-  app,
+  app: appReducer,
+  auth: authReducer,
   intl: intlReducer,
   router: routerReducer,
 });

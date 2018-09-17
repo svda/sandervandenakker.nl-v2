@@ -1,5 +1,5 @@
 import config from '../Config';
-import messages from './languages/en';
+// import messages from './languages/en';
 
 import {
   INTL_UPDATE,
@@ -7,7 +7,7 @@ import {
 
 export const initialState = {
   locale: config.get('intl.defaultLocale'),
-  messages,
+  // messages,
 };
 
 export default function (state = initialState, action: any) {

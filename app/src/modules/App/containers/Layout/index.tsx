@@ -5,13 +5,14 @@ import { Dispatch } from 'redux';
 import createStyles from '@material-ui/core/styles/createStyles';
 import withStyles from '@material-ui/core/styles/withStyles';
 
+
 import Routes from '../../../../routes';
+import * as Actions from '../../actions';
 import Menu from '../../components/Menu';
 import Window from '../../components/Window';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 
-import * as Actions from '../../actions';
 import '../../../../theme/index.css';
 
 const transform = 'translate3d(0, 15%, 0) scale(0.85)';
@@ -31,7 +32,12 @@ const styles = createStyles({
   },
 });
 
-class App extends React.Component<IAppStateProps & IHeaderOwnProps & IHeaderDispatchProps> {
+class Layout extends React.Component<ILayoutStateProps & IHeaderOwnProps & IHeaderDispatchProps> {
+
+  public async componentWillMount() {
+    const { getConfig } = this.props;
+    await getConfig();
+  }
 
   public render(): React.ReactNode {
     const { classes, menuActive, toggleMenu } = this.props;
@@ -53,11 +59,12 @@ class App extends React.Component<IAppStateProps & IHeaderOwnProps & IHeaderDisp
   }
 }
 
-interface IAppStateProps extends React.Props<any> {
+interface ILayoutStateProps extends React.Props<any> {
   menuActive: boolean;
 }
 
 interface IHeaderDispatchProps extends React.Props<any> {
+  getConfig: any; // TODO Find the right type
   toggleMenu: any; // TODO Find the right type
 }
 
@@ -65,11 +72,12 @@ interface IHeaderOwnProps {
   classes: any;
 }
 
-export default withStyles(styles)(connect<IAppStateProps, IHeaderDispatchProps>(
+export default withStyles(styles)(connect<ILayoutStateProps, IHeaderDispatchProps>(
   (state: any) => ({
     menuActive: state.app.menu.active,
   }),
   (dispatch: Dispatch) => ({
+    getConfig: () => dispatch<any>(Actions.getConfig()),
     toggleMenu: (event: React.MouseEvent) => dispatch(Actions.toggleMenu()),
   }),
-)(App));
+)(Layout));

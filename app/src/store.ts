@@ -5,7 +5,7 @@ import thunk from 'redux-thunk';
 
 import history from './history';
 import rootReducer from './reducer';
-import addAppListeners from './modules/App/listeners';
+import addAuthListeners from './modules/Auth/listeners';
 
 export interface IStore {
   router: RouterState;
@@ -24,6 +24,6 @@ const middleware = [
 
 const store = createStore(rootReducer, {}, composeEnhancers(applyMiddleware(...middleware)));
 
-addAppListeners(store.dispatch, store.getState);
+addAuthListeners(store.dispatch, store.getState);
 
 export default store;

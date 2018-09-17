@@ -1,39 +1,30 @@
 // import config from '../Config';
 
 import {
-  APP_CONFIG_UPDATE,
-  APP_MENU_TOGGLE,
-  APP_PAGE_CHANGE,
+  AUTH_LOGIN,
+  AUTH_LOGOUT,
+  AUTH_UPDATE,
 } from './actions';
 
 export const initialState = {
-  menu: {
-    active: false,
-  },
-  page: 'home',
+  user: {},
 };
 
 export default function (state = initialState, action: any) {
   const { type, payload } = action;
   switch (type) {
-    case APP_CONFIG_UPDATE: {
+    case AUTH_LOGIN:
       return {
         ...state,
-        config: payload,
-      }
-    }
-    case APP_MENU_TOGGLE: {
-      return {
-        ...state,
-        menu: {
-          active: !state.menu.active,
-        },
       };
-    }
-    case APP_PAGE_CHANGE:
+    case AUTH_LOGOUT:
       return {
         ...state,
-        page: payload.page,
+      };
+    case AUTH_UPDATE:
+      return {
+        ...state,
+        user: payload.user,
       };
     default:
       return state;
