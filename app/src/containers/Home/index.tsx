@@ -12,9 +12,6 @@ const styles = createStyles({
 });
 
 class Home extends React.Component<IHomeProps> {
-  public async componentDidMount() {
-    // const posts = [];
-  }
   public render() {
     const { classes } = this.props;
     return (
