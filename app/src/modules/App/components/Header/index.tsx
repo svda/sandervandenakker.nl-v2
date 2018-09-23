@@ -11,7 +11,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import MenuIcon from '@material-ui/icons/Menu';
 
-import { toggleMenu } from '../../actions';
 import { loginUser, logoutUser } from '../../../Auth/actions';
 
 const styles = {
@@ -41,12 +40,12 @@ const styles = {
 class Header extends React.Component<IHeaderStateProps & IHeaderOwnProps & IHeaderDispatchProps> {
 
   public render(): React.ReactNode {
-    const { classes, signIn, signOut, user } = this.props;
+    const { classes, onMenuButtonClick, signIn, signOut, user } = this.props;
 
     return (
       <AppBar id="header" className={classes.appBar} title="App">
         <Toolbar>
-          <IconButton className={[classes.menuButton, classes.button].join(' ')} onClick={this.props.toggleMenu} color="inherit" aria-label="Menu">
+          <IconButton className={[classes.menuButton, classes.button].join(' ')} onClick={onMenuButtonClick} color="inherit" aria-label="Menu">
             <MenuIcon />
           </IconButton>
           <Typography variant="title" color="inherit" className={classes.flex} />
@@ -73,20 +72,19 @@ interface IHeaderStateProps extends React.Props<any> {
 interface IHeaderDispatchProps extends React.Props<any> {
   signIn: any;
   signOut: any,
-  toggleMenu: any,
 }
 
 interface IHeaderOwnProps extends React.Props<any> {
   classes: any;
+  onMenuButtonClick: any;
 }
 
 export default withStyles(styles)(connect<IHeaderStateProps, IHeaderDispatchProps>(
-  (state: any) => ({
-    user: state.app.user,
+  ({ app }: any) => ({
+    user: app.user,
   }),
   (dispatch: Dispatch) => ({
     signIn: () => dispatch(loginUser()),
     signOut: () => dispatch(logoutUser()),
-    toggleMenu: (event: React.MouseEvent) => dispatch(toggleMenu()),
   }),
 )(Header));
