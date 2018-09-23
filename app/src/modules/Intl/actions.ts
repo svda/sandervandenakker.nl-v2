@@ -1,6 +1,6 @@
-export const INTL_UPDATE = '@@intl/UPDATE';
+export const INTL_UPDATE = 'INTL_UPDATE';
 
 export const updateIntl = ({ locale, formats, messages }: any) => ({
   type: INTL_UPDATE,
-  payload: { locale, formats, messages },
+  data: { locale, formats, messages },
 })

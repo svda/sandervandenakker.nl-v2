@@ -4,12 +4,6 @@ export const APP_CONFIG_UPDATE = 'APP_CONFIG_UPDATE';
 export const APP_MENU_TOGGLE = 'APP_MENU_TOGGLE';
 export const APP_PAGE_CHANGE = 'APP_PAGE_CHANGE';
 
-export const init = () => {
-  return async (dispatch: Dispatch) => {
-    dispatch<any>(getConfig());
-  }
-}
-
 export const changePage = (data: any) => {
   return {
     type: APP_PAGE_CHANGE,

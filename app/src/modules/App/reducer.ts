@@ -3,7 +3,6 @@
 import {
   APP_CONFIG_UPDATE,
   APP_MENU_TOGGLE,
-  APP_PAGE_CHANGE,
 } from './actions';
 
 export const initialState = {
@@ -30,11 +29,6 @@ export default function (state = initialState, action: any) {
         },
       };
     }
-    case APP_PAGE_CHANGE:
-      return {
-        ...state,
-        page: payload.page,
-      };
     default:
       return state;
   }

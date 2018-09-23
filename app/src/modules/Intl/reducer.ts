@@ -1,19 +1,24 @@
-import config from '../Config';
-// import messages from './languages/en';
-
 import {
   INTL_UPDATE,
 } from './actions';
 
 export const initialState = {
-  locale: config.get('intl.defaultLocale'),
-  // messages,
+  locale: '',
+  messages: {},
 };
 
-export default function (state = initialState, action: any) {
-  if (action.type !== INTL_UPDATE) {
-    return state;
-  }
+export default function (state = initialState, { type, data }: any) {
+  switch (type) {
+    case INTL_UPDATE: {
+      return {
+        ...state,
+        locale: data.locale,
+        messages: data.messages,
+      };
+    }
 
-  return { ...state, ...action.payload }
+    default: {
+      return state;
+    }
+  }
 };

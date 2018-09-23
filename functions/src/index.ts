@@ -1,5 +1,5 @@
 // import * as functions from 'firebase-functions';
-export { get as configGet } from './config';
+export { get as translations } from './translations';
 
 // Start writing Firebase Functions
 // https://firebase.google.com/docs/functions/typescript

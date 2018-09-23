@@ -3,6 +3,10 @@ import * as functions from 'firebase-functions';
 
 const corsHandler = cors({ origin: true });
 
+const languages = {
+  en: require('../i18n/languages/en.json')
+}
+
 export const get = functions
   .region('europe-west1')
   .https
@@ -10,8 +14,8 @@ export const get = functions
     corsHandler(request, response, () => {
       response.send({
         intl: {
-          defaultLocale: 'en',
-          locales: ['en', 'nl'],
+          locale: 'en',
+          messages: languages['en'],
         },
       });
     });

@@ -3,29 +3,25 @@ import { /*call,*/ put, /*takeEvery*/ } from 'redux-saga/effects'
 import API from './api';
 
 export function* initAppSaga() {
+  yield updateIntlSaga();
+}
+
+export function* updateIntlSaga() {
   try {
-    const data = yield API.fetch('/config');
+    const data = yield API.fetch('/translations');
     yield put({
-      type: 'CONFIG_LOAD_SUCCEEDED',
-      data,
+      type: 'INTL_UPDATE',
+      data: {
+        locale: data.intl.locale,
+        messages: data.intl.messages,
+      },
     });
-    yield updateIntlSaga(data.intl);
   } catch (error) {
     yield put({
-      type: 'CONFIG_LOAD_FAILED',
+      type: 'ERROR',
       error,
     });
   }
-}
-
-export function* updateIntlSaga(intl: any) {
-  yield put({
-    type: 'INTL_UPDATE',
-    data: {
-      locale: intl.locale,
-      messages: intl.messages,
-    },
-  })
 }
 
 // export function* incrementAsync() {

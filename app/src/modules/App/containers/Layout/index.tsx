@@ -2,16 +2,16 @@ import * as React from 'react';
 import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
+
 import createStyles from '@material-ui/core/styles/createStyles';
 import withStyles from '@material-ui/core/styles/withStyles';
 
-
 import Routes from '../../../../routes';
-import * as Actions from '../../actions';
-import Menu from '../../components/Menu';
 import Window from '../../components/Window';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import * as Actions from '../../actions';
+import Menu from '../Menu';
 
 import '../../../../theme/index.css';
 
@@ -34,11 +34,6 @@ const styles = createStyles({
 
 class Layout extends React.Component<ILayoutStateProps & IHeaderOwnProps & IHeaderDispatchProps> {
 
-  public async componentWillMount() {
-    const { getConfig } = this.props;
-    await getConfig();
-  }
-
   public render(): React.ReactNode {
     const { classes, menuActive, toggleMenu } = this.props;
 
@@ -50,7 +45,7 @@ class Layout extends React.Component<ILayoutStateProps & IHeaderOwnProps & IHead
         />
         <Menu />
         <Window onWindowClick={toggleMenu}>
-          <Header />
+          <Header onMenuButtonClick={toggleMenu} />
           <Routes />
           <Footer />
         </Window>
@@ -64,7 +59,6 @@ interface ILayoutStateProps extends React.Props<any> {
 }
 
 interface IHeaderDispatchProps extends React.Props<any> {
-  getConfig: any; // TODO Find the right type
   toggleMenu: any; // TODO Find the right type
 }
 
@@ -77,7 +71,6 @@ export default withStyles(styles)(connect<ILayoutStateProps, IHeaderDispatchProp
     menuActive: state.app.menu.active,
   }),
   (dispatch: Dispatch) => ({
-    getConfig: () => dispatch<any>(Actions.getConfig()),
     toggleMenu: (event: React.MouseEvent) => dispatch(Actions.toggleMenu()),
   }),
 )(Layout));
