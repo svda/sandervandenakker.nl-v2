@@ -1,32 +1,29 @@
-// import config from '../Config';
-
 import {
-  AUTH_LOGIN,
-  AUTH_LOGOUT,
-  AUTH_UPDATE,
-} from './actions';
+  AUTH_LOGIN_SUCCEEDED,
+  AUTH_LOGOUT_SUCCEEDED,
+} from './sagas';
 
 export const initialState = {
   user: {},
 };
 
 export default function (state = initialState, action: any) {
-  const { type, payload } = action;
+  const { type, data } = action;
   switch (type) {
-    case AUTH_LOGIN:
+    case AUTH_LOGIN_SUCCEEDED: {
       return {
         ...state,
+        user: data.user,
       };
-    case AUTH_LOGOUT:
+    }
+    case AUTH_LOGOUT_SUCCEEDED: {
       return {
         ...state,
+        user: {},
       };
-    case AUTH_UPDATE:
-      return {
-        ...state,
-        user: payload.user,
-      };
-    default:
+    }
+    default: {
       return state;
+    }
   }
 }

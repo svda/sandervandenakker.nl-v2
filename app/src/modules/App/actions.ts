@@ -1,7 +1,7 @@
 import { Dispatch } from 'redux';
 
 export const APP_CONFIG_UPDATE = 'APP_CONFIG_UPDATE';
-export const APP_MENU_TOGGLE = 'APP_MENU_TOGGLE';
+export const APP_MENU_TOGGLED = 'APP_MENU_TOGGLED';
 export const APP_PAGE_CHANGE = 'APP_PAGE_CHANGE';
 
 export const changePage = (data: any) => {
@@ -13,7 +13,7 @@ export const changePage = (data: any) => {
 
 export const toggleMenu = () => {
   return {
-    type: APP_MENU_TOGGLE,
+    type: APP_MENU_TOGGLED,
   };
 };
 

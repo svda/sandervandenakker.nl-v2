@@ -1,41 +1,14 @@
-// import { delay } from 'redux-saga'
-import { /*call,*/ put, /*takeEvery*/ } from 'redux-saga/effects'
-import API from './api';
+import { authSagas } from './modules/Auth/sagas';
+import { updateIntl, updateIntlSaga } from './modules/Intl/sagas';
 
-export function* initAppSaga() {
-  yield updateIntlSaga();
+function* initSaga() {
+  yield updateIntl();
 }
-
-export function* updateIntlSaga() {
-  try {
-    const data = yield API.fetch('/translations');
-    yield put({
-      type: 'INTL_UPDATE',
-      data: {
-        locale: data.intl.locale,
-        messages: data.intl.messages,
-      },
-    });
-  } catch (error) {
-    yield put({
-      type: 'ERROR',
-      error,
-    });
-  }
-}
-
-// export function* incrementAsync() {
-//   yield call(delay, 1000)
-//   yield put({ type: 'INCREMENT' })
-// }
-
-// export function* watchIncrementAsync() {
-//   yield takeEvery('INCREMENT_ASYNC', incrementAsync)
-// }
 
 export default function* rootSaga() {
   yield [
-    initAppSaga(),
-    // watchIncrementAsync(),
+    initSaga(),
+    authSagas(),
+    updateIntlSaga(),
   ];
 }

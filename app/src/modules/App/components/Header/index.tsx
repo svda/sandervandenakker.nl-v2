@@ -11,7 +11,10 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import MenuIcon from '@material-ui/icons/Menu';
 
-import { loginUser, logoutUser } from '../../../Auth/actions';
+import {
+  AUTH_LOGIN_REQUESTED,
+  AUTH_LOGOUT_REQUESTED,
+} from '../../../Auth/sagas';
 
 const styles = {
   appBar: {
@@ -80,11 +83,11 @@ interface IHeaderOwnProps extends React.Props<any> {
 }
 
 export default withStyles(styles)(connect<IHeaderStateProps, IHeaderDispatchProps>(
-  ({ app }: any) => ({
-    user: app.user,
+  ({ auth }: any) => ({
+    user: auth.user,
   }),
   (dispatch: Dispatch) => ({
-    signIn: () => dispatch(loginUser()),
-    signOut: () => dispatch(logoutUser()),
+    signIn: () => dispatch({ type: AUTH_LOGIN_REQUESTED }),
+    signOut: () => dispatch({ type: AUTH_LOGOUT_REQUESTED }),
   }),
 )(Header));

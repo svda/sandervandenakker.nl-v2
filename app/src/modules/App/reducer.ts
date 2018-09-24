@@ -1,8 +1,6 @@
-// import config from '../Config';
-
 import {
   APP_CONFIG_UPDATE,
-  APP_MENU_TOGGLE,
+  APP_MENU_TOGGLED,
 } from './actions';
 
 export const initialState = {
@@ -21,7 +19,7 @@ export default function (state = initialState, action: any) {
         config: payload,
       }
     }
-    case APP_MENU_TOGGLE: {
+    case APP_MENU_TOGGLED: {
       return {
         ...state,
         menu: {
