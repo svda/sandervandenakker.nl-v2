@@ -13,8 +13,6 @@ import Footer from '../../components/Footer';
 import * as Actions from '../../actions';
 import Menu from '../Menu';
 
-import '../../../../theme/index.css';
-
 const transform = 'translate3d(0, 15%, 0) scale(0.85)';
 
 const styles = createStyles({
@@ -35,7 +33,7 @@ const styles = createStyles({
 class Layout extends React.Component<ILayoutStateProps & IHeaderOwnProps & IHeaderDispatchProps> {
 
   public render(): React.ReactNode {
-    const { classes, menuActive, toggleMenu } = this.props;
+    const { classes, loading, menuActive, toggleMenu } = this.props;
 
     return (
       <div id="app" className={menuActive ? classes.active : classes.inactive}>
@@ -43,18 +41,24 @@ class Layout extends React.Component<ILayoutStateProps & IHeaderOwnProps & IHead
           defaultTitle="Sander van den Akker"
           titleTemplate="%s - Sander van den Akker"
         />
-        <Menu />
-        <Window onWindowClick={toggleMenu}>
-          <Header onMenuButtonClick={toggleMenu} />
-          <Routes />
-          <Footer />
-        </Window>
+        {loading ?
+          <div>Loading...</div> :
+          <React.Fragment>
+            <Menu />
+            <Window onWindowClick={toggleMenu}>
+              <Header onMenuButtonClick={toggleMenu} />
+              <Routes />
+              <Footer />
+            </Window>
+          </React.Fragment>
+        }          
       </div>
     );
   }
 }
 
 interface ILayoutStateProps extends React.Props<any> {
+  loading: boolean;
   menuActive: boolean;
 }
 
@@ -68,6 +72,7 @@ interface IHeaderOwnProps {
 
 export default withStyles(styles)(connect<ILayoutStateProps, IHeaderDispatchProps>(
   (state: any) => ({
+    loading: state.app.loading,
     menuActive: state.app.menu.active,
   }),
   (dispatch: Dispatch) => ({

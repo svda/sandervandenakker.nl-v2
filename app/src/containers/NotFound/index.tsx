@@ -6,14 +6,16 @@ import createStyles from '@material-ui/core/styles/createStyles';
 import Typography from '@material-ui/core/Typography';
 import Icon from '@material-ui/icons/SentimentDissatisfied';
 
-import { IThemeProps, cover } from '../../theme';
+import { IThemeProps } from '../../theme';
+import { cover } from '../../theme/jss/components/layout';
 
 const styles = ({ palette }: Theme) => createStyles({
-  center: Object.assign({}, cover, {
+  center: {
+    ...cover,
     alignItems: 'center',
     justifyContent: 'center',
     textAlign: 'center',
-  }),
+  },
   icon: {
     color: palette.text.secondary,
     fontSize: '10rem',

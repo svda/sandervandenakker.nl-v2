@@ -10,7 +10,7 @@ import Layout from './containers/Layout';
 class App extends React.Component<IAppStateProps> {
   public render() {
     const { locale, messages } = this.props;
-    console.log(locale, messages)
+
     return (
       <MuiThemeProvider theme={theme}>
         <IntlProvider key={locale} locale={locale} messages={messages}>

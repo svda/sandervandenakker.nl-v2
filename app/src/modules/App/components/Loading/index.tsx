@@ -1,10 +1,12 @@
 import * as React from 'react';
+import { LoadingComponentProps } from 'react-loadable';
+
 import withStyles from '@material-ui/core/styles/withStyles';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
-import { IThemeProps, masthead } from '../../../../theme';
-import { LoadingComponentProps } from 'react-loadable';
+import { IThemeProps } from '../../../../theme';
+import { masthead } from '../../../../theme/jss/components/layout';
 
 const styles = (theme: any) => ({
   masthead,
