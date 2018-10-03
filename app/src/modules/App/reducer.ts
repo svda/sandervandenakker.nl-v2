@@ -1,9 +1,10 @@
 import {
-  APP_CONFIG_UPDATE,
+  APP_INIT_SUCCEEDED,
   APP_MENU_TOGGLED,
 } from './actions';
 
 export const initialState = {
+  loading: true,
   menu: {
     active: false,
   },
@@ -11,12 +12,12 @@ export const initialState = {
 };
 
 export default function (state = initialState, action: any) {
-  const { type, payload } = action;
+  const { type } = action;
   switch (type) {
-    case APP_CONFIG_UPDATE: {
+    case APP_INIT_SUCCEEDED: {
       return {
         ...state,
-        config: payload,
+        loading: false,
       }
     }
     case APP_MENU_TOGGLED: {
