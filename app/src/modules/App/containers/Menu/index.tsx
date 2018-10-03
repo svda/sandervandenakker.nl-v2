@@ -6,42 +6,17 @@ import { Dispatch } from 'redux';
 import { Theme } from '@material-ui/core/styles';
 import createStyles from '@material-ui/core/styles/createStyles';
 import withStyles from '@material-ui/core/styles/withStyles';
-import BuildIcon from '@material-ui/icons/Build';
-import FaceIcon from '@material-ui/icons/Face';
-import FolderIcon from '@material-ui/icons/FolderSpecial';
-import HomeIcon from '@material-ui/icons/Home';
-import SchoolIcon from '@material-ui/icons/School';
 
-import { cover } from '../../../../theme';
-import * as Actions from '../../actions';
+import menuItems from '../../../../constants/menu';
+import { cover } from '../../../../theme/jss/components/layout';
 import { Navigation } from '../../../Navigation/components';
-
-const items = [{
-  id: 'home',
-  icon: HomeIcon,
-  ancestors: [],
-}, {
-  id: 'about',
-  icon: FaceIcon,
-  ancestors: [],
-}, {
-  id: 'services',
-  icon: BuildIcon,
-  ancestors: [],
-}, {
-  id: 'work',
-  icon: FolderIcon,
-  ancestors: [],
-}, {
-  id: 'lab',
-  icon: SchoolIcon,
-  ancestors: [],
-}];
+import * as Actions from '../../actions';
 
 const styles = createStyles(({ typography }: Theme) => ({
-  menu: Object.assign({}, cover, {
+  menu: {
+    ...cover,
     'background': 'url(/images/body.jpg)',
-  }),
+  },
   list: {
     display: 'table',
     height: '25%',
@@ -84,7 +59,7 @@ class Menu extends React.Component<IMenuOwnProps & IMenuDispatchProps & Injected
     const { classes } = this.props;
 
     return (
-      <Navigation items={items} classes={classes} />
+      <Navigation items={menuItems} classes={classes} />
     );
   }
 }
