@@ -5,7 +5,7 @@ import { IntlProvider } from 'react-intl-redux';
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 
 import theme from '../../theme';
-import Layout from './containers/Layout';
+import Routes from '../../routes';
 
 class App extends React.Component<IAppStateProps> {
   public render() {
@@ -15,7 +15,7 @@ class App extends React.Component<IAppStateProps> {
       <MuiThemeProvider theme={theme}>
         <IntlProvider key={locale} locale={locale} messages={messages}>
           <BrowserRouter>
-            <Layout />
+            <Routes />
           </BrowserRouter>
         </IntlProvider>
       </MuiThemeProvider>

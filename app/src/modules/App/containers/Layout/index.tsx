@@ -6,7 +6,6 @@ import { Dispatch } from 'redux';
 import createStyles from '@material-ui/core/styles/createStyles';
 import withStyles from '@material-ui/core/styles/withStyles';
 
-import Routes from '../../../../routes';
 import Window from '../../components/Window';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
@@ -33,7 +32,7 @@ const styles = createStyles({
 class Layout extends React.Component<ILayoutStateProps & IHeaderOwnProps & IHeaderDispatchProps> {
 
   public render(): React.ReactNode {
-    const { classes, loading, menuActive, toggleMenu } = this.props;
+    const { children, classes, loading, menuActive, toggleMenu } = this.props;
 
     return (
       <div id="app" className={menuActive ? classes.active : classes.inactive}>
@@ -47,7 +46,7 @@ class Layout extends React.Component<ILayoutStateProps & IHeaderOwnProps & IHead
             <Menu />
             <Window onWindowClick={toggleMenu}>
               <Header onMenuButtonClick={toggleMenu} />
-              <Routes />
+              {children}
               <Footer />
             </Window>
           </React.Fragment>
