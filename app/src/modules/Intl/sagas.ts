@@ -23,6 +23,6 @@ export function* updateIntl(locale: string = 'en') {
   }
 }
 
-export function* updateIntlSaga() {
+export function* intlSagas() {
   yield takeLatest(INTL_UPDATE_REQUESTED, updateIntl);
 }
