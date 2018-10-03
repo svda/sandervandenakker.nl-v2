@@ -3,7 +3,7 @@ import {
 } from './sagas';
 
 export const initialState = {
-  locale: '',
+  locale: 'en',
   messages: {},
 };
 
