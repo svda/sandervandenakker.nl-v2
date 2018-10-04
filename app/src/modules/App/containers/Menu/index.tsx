@@ -56,10 +56,10 @@ const styles = createStyles(({ typography }: Theme) => ({
 
 class Menu extends React.Component<IMenuOwnProps & IMenuDispatchProps & InjectedIntlProps> {
   public render(): React.ReactNode {
-    const { classes } = this.props;
+    const { classes, onItemClick } = this.props;
 
     return (
-      <Navigation items={menuItems} classes={classes} />
+      <Navigation items={menuItems} classes={classes} onItemClick={onItemClick} />
     );
   }
 }
