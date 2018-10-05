@@ -27,8 +27,10 @@ const Footer = ({ classes }: IThemeProps) => (
   <footer className={classes.footer}>
     <Grid container className={classes.container}>
       <Grid item xs={12} sm={10}>
-        <Typography variant="title">Get in touch</Typography>
-        <p>Use the links on the right, or contact me in more traditional ways:</p>
+        <Typography variant="title" gutterBottom>Get in touch</Typography>
+        <Typography variant="body1" paragraph>
+          Use the links on the right, or contact me in more traditional ways:
+        </Typography>
         <address className={classes.address}>
           <strong>Sander van den Akker</strong><br />
           Touwbaan 4<br />
