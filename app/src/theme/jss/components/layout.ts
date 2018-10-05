@@ -13,8 +13,8 @@ const blockLink = {
 };
 
 const containerFluid = {
-  // paddingRight: '15px',
-  // paddingLeft: '15px',
+  paddingRight: '15px',
+  paddingLeft: '15px',
   marginRight: 'auto',
   marginLeft: 'auto',
   width: '100%',
@@ -48,7 +48,6 @@ const cover = {
 
 const masthead = {
   backgroundSize: 'cover',
-  minHeight: 500,
   padding: '5rem 0',
 };
 

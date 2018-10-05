@@ -16,6 +16,7 @@ import { blockLink, container, masthead, paper } from '../../theme/jss/component
 const styles = createStyles((theme: Theme) => ({
   masthead: {
     ...masthead,
+    minHeight: 500,
     background: 'url(/images/bg-home.jpg) center',
 
     '& h1': {
@@ -29,7 +30,6 @@ const styles = createStyles((theme: Theme) => ({
   },
   container: {
     ...container,
-    padding: '15px 0',
   },
   paper,
   blockLink: {
