@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
+import CssBaseline from '@material-ui/core/CssBaseline';
 import createStyles from '@material-ui/core/styles/createStyles';
 import withStyles from '@material-ui/core/styles/withStyles';
 
@@ -43,6 +44,7 @@ class DefaultLayout extends React.Component<ILayoutStateProps & IHeaderOwnProps 
         {loading ?
           <div>Loading...</div> :
           <React.Fragment>
+            <CssBaseline />
             <Menu />
             <Window onWindowClick={toggleMenu}>
               <Header onMenuButtonClick={toggleMenu} />
