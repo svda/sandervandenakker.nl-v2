@@ -1,7 +1,7 @@
 const hover = 'all .1s linear';
-const transition = 'all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1)';
+const window = 'all 0.4s cubic-bezier(0.175, 0.885, 0.335, 1.05)';
 
 export {
   hover,
-  transition,
+  window,
 };

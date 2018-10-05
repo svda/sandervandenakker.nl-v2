@@ -29,7 +29,7 @@ const styles = createStyles({
   },
 });
 
-class Layout extends React.Component<ILayoutStateProps & IHeaderOwnProps & IHeaderDispatchProps> {
+class DefaultLayout extends React.Component<ILayoutStateProps & IHeaderOwnProps & IHeaderDispatchProps> {
 
   public render(): React.ReactNode {
     const { children, classes, loading, menuActive, toggleMenu } = this.props;
@@ -77,4 +77,4 @@ export default withStyles(styles)(connect<ILayoutStateProps, IHeaderDispatchProp
   (dispatch: Dispatch) => ({
     toggleMenu: (event: React.MouseEvent) => dispatch(Actions.toggleMenu()),
   }),
-)(Layout));
+)(DefaultLayout));

@@ -16,6 +16,13 @@ import {
   AUTH_LOGOUT_REQUESTED,
 } from '../../../Auth/sagas';
 
+const button = {
+  backgroundColor: 'rgba(0, 0, 0, 0.2)',
+  '&:hover': {
+    backgroundColor: 'rgba(0, 0, 0, 0.3)',
+  },
+};
+
 const styles = {
   appBar: {
     background: 'transparent',
@@ -26,16 +33,12 @@ const styles = {
     cursor: 'pointer',
     padding: 0,
   },
-  button: {
-    backgroundColor: 'rgba(0, 0, 0, 0.2)',
-    '&:hover': {
-      backgroundColor: 'rgba(0, 0, 0, 0.3)',
-    },
-  },
+  authButton: button,
   flex: {
     flexGrow: 1,
   },
   menuButton: {
+    ...button,
     marginLeft: -8,
   },
 };
@@ -60,7 +63,7 @@ class Header extends React.Component<IHeaderStateProps & IHeaderOwnProps & IHead
               onClick={signOut}
             />
             :
-            <Button className={classes.button} color="inherit" onClick={signIn}>Sign In</Button>
+            <Button className={classes.authButton} color="inherit" onClick={signIn}>Sign In</Button>
           }
         </Toolbar>
       </AppBar>

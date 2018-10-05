@@ -9,13 +9,11 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 
+import { Section } from '../../modules/App/components';
 import { IThemeProps } from '../../theme';
 import { blockLink, container, masthead, paper } from '../../theme/jss/components/layout';
 
 const styles = createStyles((theme: Theme) => ({
-  home: {
-    flexGrow: 1,
-  },
   masthead: {
     ...masthead,
     background: 'url(/images/bg-home.jpg) center',
@@ -24,6 +22,7 @@ const styles = createStyles((theme: Theme) => ({
       display: 'inline-block',
       marginBottom: '15px',
       padding: '10px 15px',
+      lineHeight: 1,
       color: 'white',
       background: 'rgba(0, 0, 0, 0.5)',
     },
@@ -33,7 +32,14 @@ const styles = createStyles((theme: Theme) => ({
     padding: '15px 0',
   },
   paper,
-  blockLink,
+  blockLink: {
+    ...blockLink,
+    minHeight: 154,
+
+    '& p': {
+      marginBottom: 0,
+    },
+  },
   servicesBlockLink: {
     ...blockLink,
     color: theme.palette.grey[100],
@@ -49,19 +55,19 @@ class Home extends React.Component<IHomeProps> {
   public render() {
     const { classes } = this.props;
     return (
-      <main id="page" className={classes.home}>
+      <main className={classes.main}>
         <Helmet>
           <title>Software Engineer in Amsterdam</title>
         </Helmet>
-        <div className={classes.masthead}>
+        <Section className={classes.masthead}>
           <Grid container className={classes.container} spacing={24}>
             <Grid item xs={12}>
-              <Typography variant="display1">Software Engineer in Amsterdam</Typography>
+              <Typography variant="display1">Software Engineer in Amsterdam</Typography><br />
               <Typography variant="display3">Sander van den Akker</Typography>
             </Grid>
           </Grid>
-        </div>
-        <div>
+        </Section>
+        <Section>
           <Grid container className={classes.container} spacing={24}>
             <Grid item sm={12} md={5}>
               <Paper id="expertise" className={classes.paper}>
@@ -114,7 +120,7 @@ class Home extends React.Component<IHomeProps> {
               </Grid>
             </Grid>
           </Grid>
-        </div>
+        </Section>
       </main>
     );
   }

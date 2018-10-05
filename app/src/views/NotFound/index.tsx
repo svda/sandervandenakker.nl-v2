@@ -6,12 +6,12 @@ import createStyles from '@material-ui/core/styles/createStyles';
 import Typography from '@material-ui/core/Typography';
 import Icon from '@material-ui/icons/SentimentDissatisfied';
 
+import { Section } from '../../modules/App/components';
 import { IThemeProps } from '../../theme';
-import { cover } from '../../theme/jss/components/layout';
 
 const styles = ({ palette }: Theme) => createStyles({
-  center: {
-    ...cover,
+  main: {
+    minHeight: '100%',
     alignItems: 'center',
     justifyContent: 'center',
     textAlign: 'center',
@@ -27,18 +27,16 @@ class NotFound extends React.Component<IThemeProps> {
     const { classes } = this.props;
 
     return (
-      <main id="page">
+      <main className={classes.main}>
         <Helmet>
           <title>Page Not Found</title>
         </Helmet>
-        <div className={classes.center}>
-          <div>
-            <Icon className={classes.icon} />
-            <Typography variant="display1" align="center" color="textSecondary">
-              404 - Page Not Found
-            </Typography>
-          </div>
-        </div>
+        <Section>
+          <Icon className={classes.icon} />
+          <Typography variant="display1" align="center" color="textSecondary">
+            404 - Page Not Found
+          </Typography>
+        </Section>
       </main>
     );
   }
