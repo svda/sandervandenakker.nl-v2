@@ -36,12 +36,12 @@ class About extends React.Component<IThemeProps> {
           <title>About</title>
         </Helmet>
         <Section className={classes.masthead}>
-          <Grid container className={classes.container}>
+          <Grid container className={classes.container} spacing={24}>
             <Grid item xs={12}>
-              <Typography variant="display2" align="center" color="textSecondary">
+              <Typography variant="display2" gutterBottom align="center" color="textPrimary">
                 About me
               </Typography>
-              <Typography variant="headline">
+              <Typography variant="headline" color="textSecondary">
                 Hello! I'm a web consultant and developer based in Amsterdam, The Netherlands.
                 I believe web development is an art, and I try to master it. This means I care about my craft, and I think about my work.
               </Typography>
