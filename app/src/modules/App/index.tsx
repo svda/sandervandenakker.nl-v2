@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
+import { ConnectedRouter } from 'connected-react-router';
 import { IntlProvider } from 'react-intl-redux';
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 
+import history from '../../history';
 import theme from '../../theme';
 import Routes from '../../routes';
 
@@ -14,9 +15,9 @@ class App extends React.Component<IAppStateProps> {
     return (
       <MuiThemeProvider theme={theme}>
         <IntlProvider key={locale} locale={locale} messages={messages}>
-          <BrowserRouter>
+          <ConnectedRouter history={history}>
             <Routes />
-          </BrowserRouter>
+          </ConnectedRouter>
         </IntlProvider>
       </MuiThemeProvider>
     );

@@ -1,4 +1,4 @@
-import { routerMiddleware, RouterState } from 'react-router-redux';
+import { connectRouter, routerMiddleware } from 'connected-react-router';
 import { createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { createTracker } from 'redux-segment';
@@ -9,7 +9,7 @@ import rootSaga from './sagas';
 import addAuthListeners from './modules/Auth/listeners';
 
 export interface IStore {
-  router: RouterState;
+  router: any;
 }
 
 // tslint:disable-next-line
@@ -24,7 +24,11 @@ const middleware = [
   tracker,
 ];
 
-const store = createStore(rootReducer, {}, composeEnhancers(applyMiddleware(...middleware)));
+const store = createStore(
+  connectRouter(history)(rootReducer),
+  {},
+  composeEnhancers(applyMiddleware(...middleware)),
+);
 
 saga.run(rootSaga);
 
