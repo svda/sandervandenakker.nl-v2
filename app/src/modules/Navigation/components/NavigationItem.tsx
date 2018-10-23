@@ -6,13 +6,13 @@ const getLink = (item: any) => {
   const parts: string[] = [];
   if (item.ancestors) {
     item.ancestors.forEach((a: any) => {
-      parts.push(a);
+      parts.push(`/${a}`);
     });
   }
-  if (item.id !== 'home') {
-    parts.push(item.id);
+  if (item.name !== 'Home') {
+    parts.push(item.path);
   }
-  return parts.join('/');
+  return parts.join('');
 }
 
 export interface INavigationItem {

@@ -12,7 +12,7 @@ import { cover } from '../../../../theme/jss/components/layout';
 import { Navigation } from '../../../Navigation/components';
 import * as Actions from '../../actions';
 
-const menuItems = routeConfig;
+const menuItems = routeConfig.filter((r) => r.path !== '*');
 
 const styles = createStyles(({ typography }: Theme) => ({
   menu: {
