@@ -7,10 +7,12 @@ import { Theme } from '@material-ui/core/styles';
 import createStyles from '@material-ui/core/styles/createStyles';
 import withStyles from '@material-ui/core/styles/withStyles';
 
-import menuItems from '../../../../constants/menu';
+import { routeConfig } from '../../../../routes';
 import { cover } from '../../../../theme/jss/components/layout';
 import { Navigation } from '../../../Navigation/components';
 import * as Actions from '../../actions';
+
+const menuItems = routeConfig;
 
 const styles = createStyles(({ typography }: Theme) => ({
   menu: {

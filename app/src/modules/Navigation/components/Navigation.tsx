@@ -13,7 +13,7 @@ const Navigation = ({ classes, items, onItemClick }: INavigationProps) => {
   return (
     <div className={classes.menu}>
       <ul className={classes.list} role="navigation">
-        {items.map((item: any) => <NavigationItem key={item.id} item={item} classes={classes} onClick={onItemClick} />)}
+        {items.map((item: any) => <NavigationItem key={item.name} item={item} classes={classes} onClick={onItemClick} />)}
       </ul>
     </div>
   );

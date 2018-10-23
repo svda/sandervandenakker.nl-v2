@@ -1,7 +1,7 @@
 {
-	"menu.home": "Home",
-	"menu.about": "About",
-	"menu.services": "Services",
-	"menu.work": "Work",
-	"menu.lab": "Lab"
+	"menu.Home": "Home",
+	"menu.About": "About",
+	"menu.Services": "Services",
+	"menu.Work": "Work",
+	"menu.Lab": "Lab"
 }
