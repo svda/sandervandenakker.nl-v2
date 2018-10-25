@@ -37,7 +37,7 @@ const Footer = ({ classes }: IThemeProps) => (
           1018 HS Amsterdam<br />
           <abbr title="Mobile">T:</abbr> <a href="tel:+31655115671">+31 6 5511 5671</a><br />
           <abbr title="Email">E:</abbr> <a href="mailto:info@sandervandenakker.nl">info@sandervandenakker.nl</a><br />
-          KvK Amsterdam 34302889
+          KvK Amsterdam 65362632
         </address>
       </Grid>
       <Grid item xs={12} sm={2}>

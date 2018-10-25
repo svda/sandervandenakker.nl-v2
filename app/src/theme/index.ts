@@ -4,6 +4,12 @@ const theme = createMuiTheme({
   typography: {
     // fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif',
     // fontSize: 13,
+    display2: {
+      fontWeight: 500,
+    },
+    headline: {
+      fontWeight: 100,
+    },
     // title: {
     //   fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif',
     // },

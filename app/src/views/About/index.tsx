@@ -38,7 +38,7 @@ class About extends React.Component<IThemeProps> {
         <Section className={classes.masthead}>
           <Grid container className={classes.container} spacing={24}>
             <Grid item xs={12}>
-              <Typography variant="display2" gutterBottom align="center" color="textPrimary">
+              <Typography variant="display2" align="center" color="textPrimary" gutterBottom>
                 About me
               </Typography>
               <Typography variant="headline" color="textSecondary">

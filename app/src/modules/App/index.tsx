@@ -12,6 +12,7 @@ import { AppRoute } from '../App/components';
 
 import createRoutes from '../../routes';
 const routes = createRoutes();
+
 class App extends React.Component<IAppStateProps> {
   public render() {
     const { locale, messages } = this.props;

@@ -14,7 +14,7 @@ import { IThemeProps } from '../../theme';
 import { blockLink, container, masthead, paper } from '../../theme/jss/components/layout';
 
 const styles = createStyles((theme: Theme) => ({
-  masthead: {
+  mastheadSection: {
     ...masthead,
     minHeight: 500,
     background: 'url(/images/bg-home.jpg) center',
@@ -59,7 +59,7 @@ class Home extends React.Component<IHomeProps> {
         <Helmet>
           <title>Software Engineer in Amsterdam</title>
         </Helmet>
-        <Section className={classes.masthead}>
+        <Section className={classes.mastheadSection}>
           <Grid container className={classes.container} spacing={24}>
             <Grid item xs={12}>
               <Typography variant="display1">Software Engineer in Amsterdam</Typography><br />
